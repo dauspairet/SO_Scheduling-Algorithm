@@ -39,6 +39,9 @@ class Scheduler:
             
             # execute the process for its burst time
             self.time += next_process.burst_time
+            
+            print(next_process)
+            
             next_process.status = "TERMINATED"
             
             # update the status of other processes that are waiting
@@ -51,22 +54,22 @@ class Scheduler:
             print(next_process)
 
 # create some processes
-processes = [
-    Process("P1", 0, 4),
-    Process("P2", 1, 2),
-    Process("P3", 2, 3),
-    Process("P4", 3, 1),
-]
+p1 = Process("P1", 0, 4)
+p2 = Process("P2", 1, 3)
+p3 = Process("P3", 2, 4)
+p4 = Process("P4", 3, 6)
 
-# create a scheduler and run it
-scheduler = Scheduler(processes)
-scheduler.run()            
+# create a scheduler and run the processes
+scheduler = Scheduler([p1, p2, p3, p4])
+scheduler.run()
 
 # Output
 # P1 (0, 4, 0) [RUNNING]
-# P2 (1, 2, 3) [TERMINATED]
-# P3 (2, 3, 3) [WAITING]
-# P4 (3, 1, 6) [TERMINATED]
-# P3 (2, 3, 4) [RUNNING]
-# P3 (2, 3, 4) [TERMINATED]
+# P1 (0, 4, 0) [TERMINATED]
+# P2 (1, 3, 3) [RUNNING]
+# P2 (1, 3, 3) [TERMINATED]
+# P3 (2, 4, 5) [RUNNING]
+# P3 (2, 4, 5) [TERMINATED]
+# P4 (3, 6, 8) [RUNNING]
+# P4 (3, 6, 8) [TERMINATED]
 # All processes executed
