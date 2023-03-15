@@ -61,3 +61,12 @@ processes = [
 # create a scheduler and run it
 scheduler = Scheduler(processes)
 scheduler.run()            
+
+# Output
+# P1 (0, 4, 0) [RUNNING]
+# P2 (1, 2, 3) [TERMINATED]
+# P3 (2, 3, 3) [WAITING]
+# P4 (3, 1, 6) [TERMINATED]
+# P3 (2, 3, 4) [RUNNING]
+# P3 (2, 3, 4) [TERMINATED]
+# All processes executed
