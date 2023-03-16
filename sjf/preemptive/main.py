@@ -33,15 +33,7 @@ def sjf_preemptive(processes):
             
         next_process = ready_queue.get()
         next_process.burst_time -= 1
-
-# Output
-# Completed Processes:
-# PID: 3, Arrival Time: 2, Burst Time: 0, Priority: 1, Completion Time: 3, Turnaround Time: 1, Waiting Time: 1
-# PID: 2, Arrival Time: 1, Burst Time: 0, Priority: 2, Completion Time: 4, Turnaround Time: 3, Waiting Time: 3
-# PID: 5, Arrival Time: 4, Burst Time: 0, Priority: 5, Completion Time: 7, Turnaround Time: 3, Waiting Time: 3
-# PID: 4, Arrival Time: 3, Burst Time: 0, Priority: 4, Completion Time: 11, Turnaround Time: 8, Waiting Time: 8
-# PID: 1, Arrival Time: 0, Burst Time: 0, Priority: 3, Completion Time: 15, Turnaround Time: 15, Waiting Time: 15
-# Average Waiting Time: 6.0
+        
         if next_process.burst_time == 0:
             next_process.completion_time = current_time + 1
             next_process.turnaround_time = next_process.completion_time - next_process.arrival_time
@@ -84,3 +76,13 @@ for process in completed_processes:
           f"Priority: {process.priority}, Completion Time: {process.completion_time}, "
           f"Turnaround Time: {process.turnaround_time}, Waiting Time: {process.waiting_time}")
 print(f"Average Waiting Time: {average_waiting_time}")
+
+
+# Output
+# Completed Processes:
+# PID: 3, Arrival Time: 2, Burst Time: 0, Priority: 1, Completion Time: 3, Turnaround Time: 1, Waiting Time: 1
+# PID: 2, Arrival Time: 1, Burst Time: 0, Priority: 2, Completion Time: 4, Turnaround Time: 3, Waiting Time: 3
+# PID: 5, Arrival Time: 4, Burst Time: 0, Priority: 5, Completion Time: 7, Turnaround Time: 3, Waiting Time: 3
+# PID: 4, Arrival Time: 3, Burst Time: 0, Priority: 4, Completion Time: 11, Turnaround Time: 8, Waiting Time: 8
+# PID: 1, Arrival Time: 0, Burst Time: 0, Priority: 3, Completion Time: 15, Turnaround Time: 15, Waiting Time: 15
+# Average Waiting Time: 6.0
